@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 class WeatherReport(models.Model):
     city = models.CharField(max_length=100, verbose_name="Город")
     date_time = models.DateTimeField(verbose_name="Дата и время наблюдения")
