@@ -1,13 +1,36 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+# Папки
+Lib/
+Scripts/
+share/
+.vscode/
 
-pkg/
-src/
+# Файлы
+pyvenv.cfg
+.idea/
+*.iml
+*.pyc
+*.pyo
+__pycache__/
+.env
+
+.docker-compose.yml
+
+# Виртуальное окружение
+venv/
+
+# Статические и медиа файлы
+/static/
+/media/
+
+
+# Базы данных
+*.sqlite3
+*.db
+
+
+# Миграции
+# migrations/
+docker-compose.yml
+
+.gitignore
+error.log
