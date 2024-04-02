@@ -4,6 +4,7 @@ from rest_framework import generics
 
 from .serializers import WeatherReportSerializer
 from .models import WeatherReport
+from .modules.weather_api.main import prepare_weather_data
 
 
 class WeatherAPIView(generics.ListAPIView):
@@ -38,3 +39,17 @@ class WeatherAPIView(generics.ListAPIView):
                 ]
         }
         return Response(info_message, status=status.HTTP_200_OK)
+
+    # Метод POST для отправки JSON
+    def post(self, request, *args, **kwargs):
+        prepared_data = prepare_weather_data(request.data)
+
+        serializer = WeatherReportSerializer(data=prepared_data, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                'Сообщение': 'Данные успешно сохранены в базу данных',
+                'Данные': serializer.data
+            }, status=status.HTTP_201_CREATED)
+        else:
+            print("Произошла ошибка")
