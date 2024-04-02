@@ -7,7 +7,7 @@ This application is designed to receive weather data, allowing submissions in JS
 ## Features
 - Accepts weather data submissions in JSON format or via an HTML form.
 - Stores submitted data in a database for future retrieval.
-- 
+
 ## Installation and Launch
 
 ```bash
