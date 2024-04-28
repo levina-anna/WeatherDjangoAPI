@@ -5,10 +5,12 @@ This application is designed to receive weather data, allowing submissions in JS
 ![Screenshot](https://github.com/levina-anna/levina-anna.github.io/raw/main/images/WeatherDjangoAPI.png)
 
 ## Features
+
 - Accepts weather data submissions in JSON format or via an HTML form.
 - Stores submitted data in a database for future retrieval.
 
 ## API Usage
+
 - GET /api/v1/weather
 - POST /api/v1/weather
 
