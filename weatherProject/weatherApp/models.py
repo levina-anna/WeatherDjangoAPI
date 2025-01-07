@@ -2,6 +2,9 @@ from django.db import models
 
 
 class WeatherReport(models.Model):
+    """
+    Модель для хранения данных о погоде.
+    """
     city = models.CharField(max_length=100, verbose_name="Город")
     date_time = models.DateTimeField(verbose_name="Дата и время наблюдения")
     temperature = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Температура (°C)")
