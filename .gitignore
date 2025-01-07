@@ -1,10 +1,9 @@
-# Папки
+# Folders
 Lib/
 Scripts/
 share/
-.vscode/
 
-# Файлы
+# Files
 pyvenv.cfg
 .idea/
 *.iml
@@ -13,24 +12,19 @@ pyvenv.cfg
 __pycache__/
 .env
 
-.docker-compose.yml
 
-# Виртуальное окружение
+# Virtual environment
 venv/
 
-# Статические и медиа файлы
+# Static and media files
 /static/
 /media/
 
 
-# Базы данных
+# Database
 *.sqlite3
 *.db
 
 
-# Миграции
-# migrations/
-docker-compose.yml
-
-.gitignore
-error.log
+# Migrations
+migrations/
