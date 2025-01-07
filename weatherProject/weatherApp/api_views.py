@@ -9,37 +9,37 @@ from .modules.weather_api.main import prepare_weather_data
 
 class WeatherAPIView(generics.ListAPIView):
     """
-    Представление API для обработки данных о погоде.
-    Поддерживает методы GET и POST.
+    API view for processing weather data.
+    Supports GET and POST methods.
     """
     queryset = WeatherReport.objects.all()
     serializer_class = WeatherReportSerializer
 
     def get(self, request, *args, **kwargs):
         """
-        Обрабатывает GET-запросы.
+        Handles GET requests.
 
-        Возвращает информационное сообщение о назначении API
-        и пример формата JSON для отправки данных.
+        Returns an informational message about the purpose of the API
+        and an example JSON format for submitting data.
         """
         info_message = {
-            "Информация": "Это API предназначено для отправки JSON файла c информацией о погоде"
-                          " и сохранения ее в базу данных.",
+            "Information": "This API is designed to send a JSON file with weather information"
+                           " and save it to the database.",
 
-            "Пример JSON файла":
+            "Example JSON file":
 
                 [
                     {
-                        "city": "Москва",
-                        "date_time": "2024-01-01",
+                        "city": "Moscow",
+                        "date_time": "2024-01-01T12:00:00",
                         "temperature": 3,
                         "humidity": 1,
                         "wind_speed": 1.0,
-                        "description": ""
+                        "description": "Cloudy"
                     },
                     {
-                        "city": "Москва",
-                        "date_time": "2024-01-02",
+                        "city": "Moscow",
+                        "date_time": "2024-01-02T14:30:00",
                         "temperature": 4,
                         "humidity": 1,
                         "wind_speed": 1.0,
@@ -51,16 +51,16 @@ class WeatherAPIView(generics.ListAPIView):
 
     def post(self, request, *args, **kwargs):
         """
-        Обрабатывает POST-запросы.
+        Handles POST requests.
 
-        Ожидает JSON с данными о погоде, обрабатывает их через
-        функцию prepare_weather_data, валидирует через сериализатор
-        и сохраняет в базу данных.
+        Expects a JSON file with weather data, processes it using the
+        `prepare_weather_data` function, validates it through the serializer,
+        and saves it to the database.
 
-        Возвращает:
-        - 201 Created: если данные успешно сохранены.
-        - 400 Bad Request: если данные не прошли валидацию.
-        - 500 Internal Server Error: если возникла серверная ошибка.
+        Returns:
+        - 201 Created: if the data is successfully saved.
+        - 400 Bad Request: if the data validation fails.
+        - 500 Internal Server Error: if a server error occurs.
         """
         try:
             prepared_data = prepare_weather_data(request.data)
@@ -69,16 +69,16 @@ class WeatherAPIView(generics.ListAPIView):
             if serializer.is_valid():
                 serializer.save()
                 return Response({
-                    'Сообщение': 'Данные успешно сохранены в базу данных',
-                    'Данные': serializer.data
+                    'Message': 'Data has been successfully saved to the database',
+                    'Data': serializer.data
                 }, status=status.HTTP_201_CREATED)
             else:
                 return Response({
-                    'Сообщение': 'Ошибка валидации данных',
-                    'Ошибки': serializer.errors
+                    'Message': 'Data validation error',
+                    'Errors': serializer.errors
                 }, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({
-                'Сообщение': 'Произошла ошибка на сервере',
-                'Ошибка': str(e)
+                'Message': 'A server error occurred',
+                'Errors': str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

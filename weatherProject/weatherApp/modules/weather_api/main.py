@@ -1,34 +1,34 @@
 def prepare_weather_data(data):
     """
-    Подготавливает данные о погоде для сохранения в базе данных.
+    Prepares weather data for saving to the database.
 
-    Функция принимает данные в виде словаря (один объект) или списка словарей
-    и преобразует их в формат, подходящий для сериализатора.
+    This function accepts data in the form of a dictionary (a single object)
+    or a list of dictionaries and transforms it into a format suitable for the serializer.
 
-    Параметры:
-        data (dict | list): Входные данные. Может быть одним объектом (dict)
-        или списком объектов (list). Пример входных данных:
+    Parameters:
+        data (dict | list): Input data. Can be a single object (dict)
+        or a list of objects (list). Example input:
         [
             {
-                "city": "Москва",
+                "city": "Moscow",
                 "date_time": "2024-01-01",
                 "temperature": 3,
                 "humidity": 80,
                 "wind_speed": 1.5,
-                "description": "Облачно"
+                "description": "Cloudy"
             }
         ]
 
-    Возвращает:
-        list: Подготовленные данные в виде списка словарей с обязательными
-        и дополнительными полями.
+    Returns:
+        list: Prepared data as a list of dictionaries with mandatory
+        and optional fields.
 
-    Обязательные поля:
+    Mandatory fields:
         - city
         - date_time
         - temperature
 
-    Дополнительные поля (если присутствуют):
+    Optional fields (if present):
         - humidity
         - wind_speed
         - description

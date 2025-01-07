@@ -3,5 +3,5 @@ from .api_views import WeatherAPIView
 
 
 urlpatterns = [
-    path('api/v1/weather', WeatherAPIView.as_view())
+    path('api/v1/weather/', WeatherAPIView.as_view())
 ]
